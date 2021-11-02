@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+    <title>Oschner Shoes Lovers</title>
+
+    <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
+    <style type="text/css">
+        body {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .list a {color: #cc0000; text-transform: uppercase; font-family: Verdana; font-size: 11px; text-decoration: none;}
+
+    </style>
+
+
+</head>
+<body marginheight="0" topmargin="0" marginwidth="0" bgcolor="#c5c5c5" leftmargin="0">
+
+<table cellspacing="0" border="0" style="background-image: url(<%= baseUrl %>images/bg.gif); background-color: #c5c5c5;" cellpadding="0" width="100%">
+
+    <tr>
+
+        <td valign="top">
+
+            <table cellspacing="0" border="0" align="center" style="background: #fff; border-right: 1px solid #ccc; border-left: 1px solid #ccc;" cellpadding="0" width="600">
+                <tr>
+                    <td valign="top">
+                        <!-- header -->
+                        <table cellspacing="0" border="0" height="157" cellpadding="0" width="600">
+                            <tr>
+                                <td class="main-title" height="13" valign="top" style="padding: 0 20px; font-size: 25px; font-family: Georgia; font-style: italic;" width="600" colspan="2">
+                                    <singleline label="Title">Ochsner <img src="<%= baseUrl %>images/logo.png" height="20" alt="" style="border: 0;" /></singleline>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="20" valign="top" width="600" colspan="2">
+                                    <img src="<%= baseUrl %>/images/breaker.jpg" height="20" alt="" style="border: 0;" width="600" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="header-bar" valign="top" style="color: #999; font-family: Verdana; font-size: 10px; text-transform: uppercase; padding: 0 20px; height: 15px;" width="400" height="15">
+                                    <singleline label="Title">Shoe Lovers</singleline>
+                                </td>
+                                <td class="header-bar" valign="top" style="color: #999; font-family: Verdana; font-size: 10px; text-transform: uppercase; padding: 0 20px; height: 15px; text-align: right;" width="200">
+                                    <currentdayname /> <currentday /> <currentmonthname /> <currentyear />
+                                </td>
+                            <tr>
+                                <td height="20" valign="top" width="600" colspan="2">
+                                    <img src="<%= baseUrl %>images/breaker.jpg" height="20" alt="" style="border: 0;" width="600" />
+                                </td>
+                            </tr>
+
+                            <!-- / header -->
+
+                        </table></td>
+                <tr>
+                    <td>
+                        <!-- content -->
+                        <repeater>
+                            <table cellspacing="0" border="0" cellpadding="0" width="600">
+                                <tr>
+                                    <td class="article-title" height="45" valign="top" style="padding: 20px 20px 10px; font-family: Georgia; font-size: 20px; font-weight: bold;" width="600">
+                                        <singleline label="Title">New participant on competition <%= competition.title %> (<%= competition.id %>)</singleline>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="content-copy" valign="top" style="padding: 0 20px 10px; color: #000; font-size: 14px; font-family: Georgia; line-height: 20px;">
+                                        <multiline label="Description">User data:</multiline>
+                                        <p><b>ID: </b><%= user.id %></p>
+                                        <p><b>First name: </b><%= user.firstname %></p>
+                                        <p><b>Last name: </b><%= user.lastname %></p>
+                                        <p><b>Club card number: </b><%= user.card.cardNumber %></p>
+                                        <p><b>Address: </b><%= user.address %></p>
+                                        <p><b>Address number: </b><%= user.addressNum %></p>
+                                        <p><b>Postcode: </b><%= user.postcode %></p>
+                                        <p><b>Town: </b><%= user.town %></p>
+                                        <p><b>Phone: </b><%= user.phone %></p>
+                                        <p><b>Email: </b><%= user.email %></p>
+
+                                        <br/>
+                                        <multiline label="Description">Competition data:</multiline>
+                                        <p><b>Title: </b><%= competition.title %></p>
+                                        <p><b>Description: </b></p><p><%- competition.description %></p>
+
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </repeater>
+                        <!--  / content -->
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" width="600">
+                        <!-- footer -->
+                        <table cellspacing="0" border="0" height="202" cellpadding="0" width="600">
+                            <tr>
+                                <td height="20" valign="top" width="600" colspan="2">
+                                    <img src="<%= baseUrl %>images/breaker.jpg" height="20" alt="" style="border: 0;" width="600" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    <table cellspacing="0" border="0" width="600" cellpadding="0">
+                                        <tr>
+                                            <td valign="top" width="255">
+                                                <table cellspacing="0" width="255" cellpadding="0">
+                                                    <tr>
+                                                        <td valign="top">
+                                                            <!--button-->
+                                                            <table cellspacing="0" border="0" cellpadding="10" width="210">
+                                                                <tr>
+                                                                    <td><br /></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <img src="<%= baseUrl %>images/logo.png" alt="" style="border: 0;" height="150px" />
+                                                                </tr>
+                                                            </table><!--/button-->
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!--<tr>-->
+                                <!--<td class="copyright" height="100" align="center" valign="top" style="padding: 0 20px; color: #999; font-family: Verdana; font-size: 10px; text-transform: uppercase; line-height: 20px;" width="600" colspan="2">-->
+                                    <!--<multiline label="Description">Company and the Company logo are registered trademarks of Company <br />-->
+                                        <!--Company - 123 Some Street, City, ST 99999. Ph +1 4 1477 89 745</multiline>-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                        </table>
+                        <!-- / end footer -->
+                    </td>
+                </tr></table></td>
+
+
+
+
+</table></body></html>

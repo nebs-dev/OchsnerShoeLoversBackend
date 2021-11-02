@@ -1,0 +1,66 @@
+<section class="content-header clearfix">
+    <h1>Offers
+        <small><%= __('Language') %> - <%= req.params.language %></small>
+    </h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"><%= __('Offers') %></h3>
+                    <a class="btn btn-success btn-sm pull-right" href="/offers/<%= req.params.language %>/create">
+                        <span><%= __("Add new") %></span> </a>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="form-group col-xs-2">
+                                    <select class="form-control" id="selectFilter">
+                                        <option value="all"><%= __('All') %></option>
+                                        <option value="active"><%= __('Active') %></option>
+                                        <option value="planned"><%= __('Planned') %></option>
+                                        <option value="archived"><%= __('Archived') %></option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <table class="table table-striped filterTable">
+                                <thead>
+                                    <tr>
+                                        <th class="col-md-4"><%= __('Title') %></th>
+                                        <th class="col-md-1"><%= __('Status') %></th>
+                                        <th class="col-md-1"><%= __('Actions') %></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% _.each(offers, function(offerItem) { %>
+                                        <tr class="<%= offerItem.status %> bodyRow">
+                                            <td class="table-title">
+                                                <a href="/offers/<%= req.params.language %>/<%= offerItem.id %>"><%= offerItem.title %></a>
+                                            </td>
+                                            <td>
+                                                <span class="label label-<%= status[offerItem.status] %>"><%= __(offerItem.status) %></span>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-success btn-sm" href="/offers/<%= req.params.language %>/<%= offerItem.id %>">
+                                                    <i class="fa fa-edit"></i> <span><%= __("Edit") %></span>
+                                                </a>
+                                                <a data-msg="<%= __("Are you sure?") %>" class="btn btn-danger btn-sm deleteBtn" href="/offers/<%= req.params.language %>/<%= offerItem.id %>/destroy">
+                                                    <i class="fa fa-close"></i> <span><%= __("Delete") %></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

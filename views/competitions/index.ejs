@@ -1,0 +1,66 @@
+    <section class="content-header clearfix">
+    <h1><%= __('Competitions') %>
+        <small><%= __('Language') %> - <%= req.params.language %></small>
+    </h1>
+</section>
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"><%= __('Competitions') %></h3>
+                    <a class="btn btn-success btn-sm pull-right" href="/competitions/<%= req.params.language %>/create">
+                        <i class="fa fa-edit"></i> <span><%= __("Add new") %></span> </a>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="form-group col-xs-2">
+                                    <select class="form-control" id="selectFilter">
+                                        <option value="all"><%= __('All') %></option>
+                                        <option value="active"><%= __('Active') %></option>
+                                        <option value="planned"><%= __('Planned') %></option>
+                                        <option value="archived"><%= __('Archived') %></option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <table class="table table-striped filterTable">
+                                <thead>
+                                    <tr>
+                                        <th class="col-md-6"><%= __('Title') %></th>
+                                        <th class="col-md-1"><%= __('Status') %></th>
+                                        <th class="col-md-2"><%= __('Actions') %></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% _.each(competitions, function(competitionItem) { %>
+                                        <tr class="<%= competitionItem.status %> bodyRow">
+                                            <td class="table-title">
+                                                <a href="/competitions/<%= req.params.language %>/<%= competitionItem.id %>"><%= competitionItem.title %></a>
+                                            </td>
+                                            <td>
+                                                <span class="label label-<%= status[competitionItem.status] %>"><%= __(competitionItem.status) %></span>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-success btn-sm" href="/competitions/<%= req.params.language %>/<%= competitionItem.id %>">
+                                                    <i class="fa fa-edit"></i> <span><%= __("Edit") %></span>
+                                                </a>
+                                                <a data-msg="<%= __("Are you sure?") %>" class="btn btn-danger btn-sm deleteBtn" href="/competitions/<%= req.params.language %>/<%= competitionItem.id %>/destroy">
+                                                    <i class="fa fa-close"></i> <span><%= __("Delete") %></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

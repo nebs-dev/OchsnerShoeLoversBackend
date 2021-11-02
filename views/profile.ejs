@@ -1,0 +1,65 @@
+<section class="content-header clearfix">
+    <h1>Profile</h1>
+</section>
+
+
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"><%= __('Profile data') %></h3>
+                </div>
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="ajaxForm" action="" method="post" enctype="multipart/form-data">
+
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="name"><%= __('First name') %></label>
+                                        <input class="form-control" id="firstname" name="firstname" type="text" value="<%= admin ? admin.firstname : "" %>" placeholder="<%= __('Enter first name') %>" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="name"><%= __('Last name') %></label>
+                                        <input class="form-control" id="lastname" name="lastname" type="text" value="<%= admin ? admin.lastname : "" %>" placeholder="<%= __('Enter last name') %>" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="name"><%= __('Email') %></label>
+                                        <input class="form-control" id="email" name="email" type="text" value="<%= admin ? admin.email : "" %>" placeholder="<%= __('Enter email') %>" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="name"><%= __('Password') %></label>
+                                        <input class="form-control" id="password" name="password" type="password" value="" >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="cropper-holder">
+                                            <label><%= __('Image') %></label>
+                                            <img data-name="image" data-width="500" data-height="500" class="cropper" src="<%= admin.image ? admin.image : '/images/default.png' %>">
+                                            <input type="file" class="cropper-picker">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary submitBtn"><%= __('Submit') %></button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>

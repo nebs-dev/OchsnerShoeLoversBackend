@@ -1,0 +1,14 @@
+<% if(items) { %>
+
+    <select class="linkItem form-control" name="linkItem">
+        <option value=""><%= __('Select item') %></option>
+        <% _.each(items, function(item) { %>
+            <option value="<%= item.id %>"><%= item.title %></option>
+        <% }); %>
+    </select>
+
+<% } else { %>
+    <select class="linkItem form-control" name="linkItem" disabled %>>
+        <option value=""><%= __('Select item') %></option>
+    </select>
+<% } %>

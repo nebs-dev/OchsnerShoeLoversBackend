@@ -1,0 +1,109 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+        <!-- Sidebar user panel (optional) -->
+        <a href="/profile">
+            <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="<%= req.session.user.image ? req.session.user.image : '/images/default_avatar.png' %>" class="img-circle" alt="User Image"/>
+                    </div>
+                <div class="pull-left info">
+                    <p><%= req.session.user.firstname %> <%= req.session.user.lastname %></p>
+                    <!-- Status -->
+                    <!--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>-->
+                </div>
+            </div>
+        </a>
+
+        <!-- search form (Optional) -->
+        <!--<form action="#" method="get" class="sidebar-form">-->
+            <!--<div class="input-group">-->
+                <!--<input type="text" name="q" class="form-control" placeholder="Search..."/>-->
+              <!--<span class="input-group-btn">-->
+                <!--<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>-->
+                <!--</button>-->
+              <!--</span>-->
+            <!--</div>-->
+        <!--</form>-->
+        <!-- /.search form -->
+
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+            <li class="header">Menu</li>
+            <!-- Optionally, you can add icons to the links -->
+
+            <!-- News -->
+            <li class="treeview <% if(req.url.indexOf("news") > -1){ %>active<% } %>">
+                <a href="#"><i class="fa fa-newspaper-o"></i> <span><%= __('News') %></span>
+                    <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="/news/de"><%= __('German') %></a></li>
+                    <li><a href="/news/fr"><%= __('French') %></a></li>
+                    <li><a href="/news/it"><%= __('Italian') %></a></li>
+                </ul>
+            </li>
+
+            <!-- Trends -->
+            <li class="treeview <% if(req.url.indexOf("trends") > -1){ %>active<% } %>">
+                <a href="#"><i class="fa fa-line-chart"></i> <span><%= __('Trends') %></span>
+                    <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="/trends/de"><%= __('German') %></a></li>
+                    <li><a href="/trends/fr"><%= __('French') %></a></li>
+                    <li><a href="/trends/it"><%= __('Italian') %></a></li>
+                </ul>
+            </li>
+
+            <!-- Offers -->
+            <li class="treeview <% if(req.url.indexOf("offers") > -1){ %>active<% } %>">
+                <a href="#"><i class="fa fa-tags"></i> <span><%= __('Offers') %></span>
+                    <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="/offers/de"><%= __('German') %></a></li>
+                    <li><a href="/offers/fr"><%= __('French') %></a></li>
+                    <li><a href="/offers/it"><%= __('Italian') %></a></li>
+                </ul>
+            </li>
+
+            <!-- Competitions -->
+            <li class="treeview <% if(req.url.indexOf("competitions") > -1){ %>active<% } %>">
+                <a href="#"><i class="fa fa-trophy"></i> <span><%= __('Competitions') %></span>
+                    <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="/competitions/de"><%= __('German') %></a></li>
+                    <li><a href="/competitions/fr"><%= __('French') %></a></li>
+                    <li><a href="/competitions/it"><%= __('Italian') %></a></li>
+                </ul>
+            </li>
+
+            <!-- Teasers -->
+            <li class="treeview <% if(req.url.indexOf("teaser") > -1){ %>active<% } %>">
+                <a href="#"><i class="fa fa-youtube-play"></i> <span><%= __('Teasers') %></span>
+                    <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="/teasers/de"><%= __('German') %></a></li>
+                    <li><a href="/teasers/fr"><%= __('French') %></a></li>
+                    <li><a href="/teasers/it"><%= __('Italian') %></a></li>
+                </ul>
+            </li>
+
+            <!-- Admins -->
+            <% if(req.session.user.superadmin) { %>
+                <li class="treeview <% if(req.url.indexOf("admins") > -1){ %>active<% } %>">
+                    <a href="#"><i class="fa fa-users"></i> <span><%= __('Admins') %></span>
+                        <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="/admins/list"><%= __('List') %></a></li>
+                    </ul>
+                </li>
+            <% } %>
+
+        </ul>
+        <!-- /.sidebar-menu -->
+
+    </section>
+    <!-- /.sidebar -->
+</aside>

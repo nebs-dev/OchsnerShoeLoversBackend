@@ -1,0 +1,57 @@
+<section class="content-header clearfix">
+    <h1>Admins</h1>
+</section>
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"><%= __('Admins') %></h3>
+                    <a class="btn btn-success btn-sm pull-right" href="/admins/create">
+                        <span><%= __("Add new") %></span> 
+                    </a>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-striped filterTable">
+                                <thead>
+                                    <tr>
+                                        <th><%= __('Email') %></th>
+                                        <th><%= __('First name') %></th>
+                                        <th><%= __('Last name') %></th>
+                                        <th><%= __('Superadmin') %></th>
+                                        <th><%= __('Actions') %></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% _.each(admins, function(admin) { %>
+                                        <tr class="bodyRow">
+                                            <td class="table-title"><%= admin.email %></td>
+                                            <td class="table-title"><%= admin.firstname %></td>
+                                            <td class="table-title"><%= admin.lastname %></td>
+                                            <td class="table-title"><%= admin.superadmin %></td>
+                                            <td>
+                                                <a class="btn btn-success btn-sm" href="/admins/<%= admin.id %>">
+                                                    <i class="fa fa-edit"></i> <span><%= __("Edit") %></span>
+                                                </a>
+
+                                                <% if(admin.id != req.session.user.id) { %>
+                                                    <a data-msg="<%= __("Are you sure?") %>" class="btn btn-danger btn-sm deleteBtn" href="/admins/destroy/<%= admin.id %>">
+                                                        <i class="fa fa-close"></i> <span><%= __("Delete") %></span>
+                                                    </a>
+                                                <% } %>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                </tbody> 
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

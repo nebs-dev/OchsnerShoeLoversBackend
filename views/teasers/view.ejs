@@ -1,0 +1,104 @@
+<section class="content-header clearfix">
+    <h1><%= __('Teaser') %>
+        <small><%= __('Language') %> - <%= req.params.language %></small>
+    </h1>
+</section>
+
+
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"><%= __('Teaser data') %></h3>
+                </div>
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="ajaxForm" action="" method="post" enctype="multipart/form-data" novalidate>
+
+                                <div class="box-body row">
+
+                                    <!--<div class="form-group">-->
+                                    <!--<label for="name"><%= __('Date range') %></label>-->
+                                    <!--<input class="form-control" id="daterange" name="daterange" type="text" value="" placeholder="<%= __('Enter teaser date range') %>" required>-->
+                                    <!--</div>-->
+
+                                    <div class="form-group col-md-6">
+                                        <label for="name"><%= __('External link') %></label>
+                                        <input type="radio" id="externalLink" name="linkType" class="linkType"
+                                               value="0" <%= (!teaser.linkType) ? 'checked="checked"' : '' %>>
+
+                                        <input class="form-control" id="link" name="link" type="text"
+                                               value="<%= teaser && teaser.link && !teaser.linkType ? teaser.link : "" %>"
+                                               placeholder="<%= __('Enter deep link for app section or content item') %>"
+                                               <%= (teaser.linkType) ? 'disabled="disabled"' : '' %>>
+
+
+                                        <label for="name"><%= __('In-App link') %></label>
+                                        <input type="radio" id="inAppLink" name="linkType" class="linkType"
+                                               value="1" <%= (teaser && teaser.linkType) ? 'checked="checked"' : '' %>>
+
+                                        <div class="form-group">
+                                            <label>Link section</label>
+                                            <select name="linkSection" class="linkSection form-control" <%= (!teaser.linkType) ? 'disabled="disabled"' : '' %>>
+                                                <option value="home" <%= (teaser.linkSection == 'home') ? 'selected' : '' %>><%= __('Home') %></option>
+                                                <option value="shoe_shelf" <%= (teaser.linkSection == 'shoe_shelf') ? 'selected' : '' %>><%= __('Shoe Shelf') %></option>
+                                                <option value="size_calculator" <%= (teaser.linkSection == 'size_calculator') ? 'selected' : '' %>><%= __('Size Calculator') %></option>
+                                                <option value="news" <%= (teaser.linkSection == 'news') ? 'selected' : '' %>><%= __('News') %></option>
+                                                <option value="trends" <%= (teaser.linkSection == 'trends') ? 'selected' : '' %>><%= __('Trends') %></option>
+                                                <option value="offers" <%= (teaser.linkSection == 'offers') ? 'selected' : '' %>><%= __('Offers') %></option>
+                                                <option value="competitions" <%= (teaser.linkSection == 'competitions') ? 'selected' : '' %>><%= __('Competitions') %></option>
+                                                <option value="vouchers" <%= (teaser.linkSection == 'vouchers') ? 'selected' : '' %>><%= __('Vouchers') %></option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Link Item</label>
+                                            <div class="linkItemDiv">
+                                                <% if(!items) { %>
+                                                    <select name="linkItem" class="linkItem form-control" <%= (!teaser.linkType) ? 'disabled="disabled"' : '' %>>
+                                                        <option value=""><%= __('Select item') %></option>
+                                                    </select>
+                                                <% } else { %>
+                                                    <select class="linkItem form-control" name="linkItem">
+                                                        <option value=""><%= __('Select item') %></option>
+                                                        <% _.each(items, function(item) { %>
+                                                            <option value="<%= item.id %>" <%= (item.id == teaser.linkItem) ? 'selected' : '' %>><%= item.title %></option>
+                                                        <% }); %>
+                                                    </select>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <div class="cropper-holder">
+                                            <label><%= __('Image') %></label>
+                                            <img data-name="image" data-width="500" data-height="500" class="cropper"
+                                                 src="<%= teaser.image ? teaser.image : '/images/default.png' %>">
+                                            <input type="file" class="cropper-picker">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-success submitBtn"><%= __('Submit') %></button>
+                                    <a class="btn btn-link btn-sm" href="/teasers/<%= req.params.language %>">
+                                        <span><%= __("Cancel") %></span> 
+                                    </a>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
